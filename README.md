@@ -23,10 +23,10 @@ Uma aplicação web moderna de mentalismo que simula a leitura mental através d
 
 ```bash
 # Clone o repositório
-git clone https://github.com/davidassef/omentalista.git
+git clone https://github.com/davidassef/OMentalista.git
 
 # Entre no diretório
-cd omentalista
+cd OMentalista
 
 # Instale as dependências
 npm install
@@ -94,7 +94,7 @@ vercel --prod
    - Crie `.github/workflows/deploy.yml` (já configurado)
    - Configure o workflow para build e deploy (já configurado)
    - Ative GitHub Pages nas configurações do repositório
-   - URL de acesso: https://davidassef.github.io/omentalista/
+   - URL de acesso: https://davidassef.github.io/OMentalista/
 
 ### Deploy Manual (Servidor Próprio)
 
