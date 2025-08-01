@@ -35,19 +35,13 @@
   height: auto;          /* Altura proporcional */
   object-fit: contain;   /* Mantém proporções da imagem */
   opacity: 0.2;          /* Transparência para não ofuscar o conteúdo */
-  filter: blur(0.2px) drop-shadow(0 20px 50px rgba(139, 92, 246, 0.4)); /* Efeito de desfoque e sombra roxa */
-  transform: translateX(-67%); /* Desloca a imagem em -67% de sua própria largura para compensar o espaço transparente e centralizar o personagem visualmente */
-  transition: all var(--transition-normal); /* Transição suave para hover */
+  filter: blur(0.1px) drop-shadow(0 25px 60px rgba(139, 92, 246, 0.5)); /* Efeito de desfoque e sombra roxa fixo */
+  transform: translateX(-67%) scale(1.03); /* Posição fixa com escala aplicada */
   will-change: transform, opacity; /* Otimização para animações */
   backface-visibility: hidden; /* Melhora performance de animações */
 }
 
-/* Efeito hover na imagem do Mentalista */
-.welcome-step:hover .mentalista-image {
-  opacity: 0.2;          /* Aumenta opacidade no hover */
-  transform: translateX(-67%) scale(1.03); /* Mantém a centralização durante o hover */
-  filter: blur(0.1px) drop-shadow(0 25px 60px rgba(139, 92, 246, 0.5)); /* Intensifica efeitos visuais */
-}
+/* Efeito hover removido conforme solicitado */
 
 /* Container da descrição principal com efeito glassmorphism */
 .welcome-description {
