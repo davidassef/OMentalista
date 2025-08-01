@@ -1,15 +1,18 @@
 # 🔮 O Mentalista v1.0
 
-Uma aplicação web moderna de mentalismo que simula a leitura mental através de uma experiência interativa e envolvente. O projeto utiliza técnicas psicológicas e matemáticas para criar uma ilusão convincente de leitura mental.
+Uma aplicação web moderna de mentalismo que simula a leitura mental através de uma experiência interativa e envolvente. Este projeto frontend de entretenimento é **100% funcional** e utiliza técnicas psicológicas e matemáticas para criar uma ilusão convincente de leitura mental, proporcionando uma experiência imersiva e divertida para os usuários.
 
 ## ✨ Características
 
-- **Interface Moderna**: Desenvolvida com React 18 e Vite
-- **Animações Fluidas**: Powered by Framer Motion
-- **Design Responsivo**: Funciona perfeitamente em desktop e mobile
-- **Tema Dark**: Interface elegante com tema escuro
-- **Experiência Imersiva**: 5 etapas guiadas para uma experiência completa
+- **Interface Moderna**: Desenvolvida com React 18 e Vite para máxima performance
+- **Animações Fluidas**: Powered by Framer Motion para transições suaves
+- **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
+- **Tema Dark Elegante**: Interface sofisticada com tema escuro profissional
+- **Experiência Imersiva**: 5 etapas cuidadosamente projetadas para máximo engajamento
+- **Paginação Inteligente**: Sistema de navegação otimizado para dificultar a identificação de padrões
+- **UX/UI Refinada**: Botões com gradientes, efeitos hover e design moderno
 - **Deploy Automático**: Configurado para GitHub Pages, Netlify e Vercel
+- **100% Funcional**: Aplicação completa e pronta para uso em produção
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -133,11 +136,31 @@ src/
 
 ## 🎮 Como Funciona
 
-1. **Boas-vindas**: Introdução à experiência
-2. **Pensamento**: Usuário pensa em um número de 10-99
-3. **Canalização**: Processo de concentração mental
-4. **Tabela de Símbolos**: Usuário encontra e memoriza um símbolo
-5. **Revelação**: O "mentalista" revela o símbolo pensado
+A aplicação guia o usuário através de uma experiência de mentalismo em 5 etapas:
+
+1. **Boas-vindas**: Introdução envolvente à experiência de leitura mental
+2. **Pensamento**: Usuário escolhe mentalmente um número de 10-99
+3. **Canalização**: Processo de concentração mental com animações imersivas
+4. **Tabela de Símbolos**: Interface paginada (15 itens por página) onde o usuário encontra e memoriza um símbolo específico
+5. **Revelação**: O "mentalista" revela magicamente o símbolo pensado
+
+### 🧠 A Magia por Trás
+A aplicação utiliza princípios matemáticos baseados em múltiplos de 9 e uma interface cuidadosamente projetada para mascarar o padrão, criando uma experiência verdadeiramente mágica de leitura mental.
+
+## 🆕 Melhorias Recentes
+
+### Interface da Tabela de Símbolos
+- **Paginação Reorganizada**: Indicadores numéricos no topo e botões de navegação na base
+- **Design Moderno**: Botões com gradientes, bordas elegantes e efeitos hover/active
+- **Otimização Estratégica**: Redução de 20 para 15 itens por página para aumentar a dificuldade
+- **Responsividade Aprimorada**: Layout otimizado para tablets (768px) e smartphones (480px)
+- **UX Refinada**: Remoção de ícones desnecessários para um design mais limpo
+
+### Experiência do Usuário
+- **Navegação Intuitiva**: Separação clara entre indicadores de página e controles de navegação
+- **Feedback Visual**: Efeitos shimmer e transições suaves nos botões
+- **Acessibilidade**: Estados disabled bem definidos e contraste adequado
+- **Performance**: Animações otimizadas e carregamento rápido
 
 ## 🔧 Configurações de Deploy
 
