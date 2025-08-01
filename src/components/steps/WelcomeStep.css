@@ -38,6 +38,8 @@
   filter: blur(0.2px) drop-shadow(0 20px 50px rgba(139, 92, 246, 0.4)); /* Efeito de desfoque e sombra roxa */
   transform: translateX(-67%); /* Desloca a imagem em -67% de sua própria largura para compensar o espaço transparente e centralizar o personagem visualmente */
   transition: all var(--transition-normal); /* Transição suave para hover */
+  will-change: transform, opacity; /* Otimização para animações */
+  backface-visibility: hidden; /* Melhora performance de animações */
 }
 
 /* Efeito hover na imagem do Mentalista */
@@ -54,6 +56,7 @@
   gap: var(--spacing-lg); /* Espaçamento entre parágrafos */
   background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente escuro */
   backdrop-filter: blur(8px); /* Efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilidade com Safari/iOS */
   border-radius: var(--border-radius-lg); /* Bordas arredondadas */
   padding: var(--spacing-xl); /* Espaçamento interno */
   border: 1px solid rgba(139, 92, 246, 0.25); /* Borda roxa sutil */
@@ -93,6 +96,7 @@
   padding: var(--spacing-md); /* Espaçamento interno */
   background: rgba(139, 92, 246, 0.15); /* Fundo roxo semi-transparente */
   backdrop-filter: blur(6px); /* Efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(6px); /* Compatibilidade com Safari/iOS */
   border-radius: var(--border-radius-lg); /* Bordas arredondadas */
   border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
   min-width: 100px;       /* Largura mínima */
@@ -288,5 +292,41 @@
     opacity: inherit; /* Mantém a opacidade original */
     transform: inherit; /* Mantém a transformação original */
     filter: inherit; /* Mantém o filtro original */
+  }
+  
+  .welcome-button:hover,
+  .feature-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Otimizações específicas para dispositivos iOS antigos (iPhone 8 e similares) */
+@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  .mentalista-image {
+    opacity: 0.05 !important; /* Força transparência muito baixa */
+    filter: none; /* Remove filtros pesados */
+    transform: translateX(-50%) scale(0.8); /* Reduz tamanho e centraliza melhor */
+    will-change: auto; /* Remove otimização que pode causar problemas */
+  }
+  
+  .welcome-description,
+  .feature-item {
+    backdrop-filter: none; /* Remove backdrop-filter problemático */
+    -webkit-backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.85); /* Usa fundo sólido mais opaco */
+  }
+  
+  .welcome-content {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Desabilita animações pesadas */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

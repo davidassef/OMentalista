@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useMentalismGame } from './hooks/useMentalismGame'
 import { WelcomeStep } from './components/steps/WelcomeStep'
@@ -9,11 +9,48 @@ import { RevealStep } from './components/steps/RevealStep'
 import { Background } from './components/ui/Background'
 import { StepIndicator } from './components/ui/StepIndicator'
 import './styles/App.css'
+import './styles/mobile-optimizations.css'
 
 const TOTAL_STEPS = 5
 
 function App() {
   const { currentStep, symbolMap, magicSymbol, nextStep, prevStep, restart } = useMentalismGame()
+  const [isOldDevice, setIsOldDevice] = useState(false)
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false)
+
+  useEffect(() => {
+    // Detecta dispositivos antigos e com baixa performance
+    const detectOldDevice = () => {
+      const userAgent = navigator.userAgent
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent)
+      const isOldIOS = isIOS && (
+        userAgent.includes('iPhone OS 12_') ||
+        userAgent.includes('iPhone OS 13_') ||
+        userAgent.includes('iPhone OS 14_') ||
+        userAgent.includes('iPhone8,') ||
+        userAgent.includes('iPhone9,') ||
+        userAgent.includes('iPhone10,')
+      )
+      
+      const isOldAndroid = /Android [4-7]/.test(userAgent)
+      const hasLowRAM = navigator.deviceMemory && navigator.deviceMemory < 4
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      
+      const isOld = isOldIOS || isOldAndroid || hasLowRAM
+      setIsOldDevice(isOld)
+      setShouldReduceMotion(prefersReducedMotion || isOld)
+      
+      // Adiciona classe CSS para otimizações específicas
+      if (isOld) {
+        document.body.classList.add('old-device')
+      }
+      if (prefersReducedMotion || isOld) {
+        document.body.classList.add('reduce-motion')
+      }
+    }
+    
+    detectOldDevice()
+  }, [])
 
   const renderStep = () => {
     switch (currentStep) {
@@ -43,11 +80,11 @@ function App() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
-              initial={{ opacity: 0, y: 50 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
+              exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -50 }}
               transition={{ 
-                duration: 0.5, 
+                duration: shouldReduceMotion ? 0.01 : (isOldDevice ? 0.2 : 0.5), 
                 ease: [0.4, 0, 0.2, 1] 
               }}
               className="step-container"

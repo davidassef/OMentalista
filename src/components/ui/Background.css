@@ -100,6 +100,7 @@
   height: 100%;
   background: rgba(10, 10, 15, 0.3);
   backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
 }
 
 /* Responsividade */
@@ -122,11 +123,79 @@
     width: 200px;
     height: 200px;
   }
+  
+  /* Reduz blur para melhor performance */
+  .circle {
+    filter: blur(0.5px);
+  }
+  
+  .background-overlay {
+    backdrop-filter: blur(0.3px);
+    -webkit-backdrop-filter: blur(0.3px);
+  }
+}
+
+/* Otimizações para dispositivos móveis pequenos */
+@media (max-width: 480px) {
+  .circle-1 {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    right: -100px;
+  }
+  
+  .circle-2 {
+    width: 250px;
+    height: 250px;
+    bottom: -125px;
+    left: -125px;
+  }
+  
+  .circle-3 {
+    width: 150px;
+    height: 150px;
+  }
+  
+  /* Remove filtros pesados em dispositivos pequenos */
+  .circle {
+    filter: none;
+  }
+  
+  .background-overlay {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 10, 15, 0.5);
+  }
+}
+
+/* Otimizações específicas para dispositivos iOS antigos */
+@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  .background-circles,
+  .background-particles {
+    display: none; /* Remove elementos pesados */
+  }
+  
+  .background-overlay {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 10, 15, 0.7);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .background-particles,
   .background-circles {
     display: none;
+  }
+}
+
+/* Otimizações de performance para dispositivos com pouca memória */
+@media (max-device-width: 480px) and (orientation: portrait) {
+  .background-particles {
+    display: none; /* Remove partículas em dispositivos pequenos */
+  }
+  
+  .circle {
+    will-change: auto; /* Remove otimizações que podem causar problemas */
   }
 }

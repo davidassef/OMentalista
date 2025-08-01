@@ -179,10 +179,55 @@ body {
     --font-size-3xl: 1.5rem;
     --font-size-4xl: 1.875rem;
     --font-size-5xl: 2.25rem;
+    /* Reduz duração das transições para melhor performance */
+    --transition-fast: 0.1s ease;
+    --transition-normal: 0.2s ease;
   }
   
   .container {
     padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Otimizações para dispositivos móveis pequenos */
+@media (max-width: 480px) {
+  :root {
+    /* Transições ainda mais rápidas */
+    --transition-fast: 0.05s ease;
+    --transition-normal: 0.1s ease;
+  }
+  
+  /* Simplifica animações para melhor performance */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideInUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Desabilita animações pesadas em dispositivos iOS antigos */
+@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  @keyframes fadeIn,
+  @keyframes slideInUp,
+  @keyframes scaleIn,
+  @keyframes pulse,
+  @keyframes glow {
+    from, to { opacity: 1; transform: none; box-shadow: none; }
   }
 }
 
