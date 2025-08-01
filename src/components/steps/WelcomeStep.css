@@ -11,10 +11,10 @@
   bottom: 0;             /* Alinha ao fundo do container */
   left: 50%;             /* Centraliza horizontalmente */
   transform: translateX(-50%); /* Ajuste fino da centralização */
-  width: 50vw;           /* Ocupa metade da largura da viewport */
-  height: 50vh;          /* Ocupa metade da altura da viewport */
-  max-width: 600px;      /* Largura máxima para não ficar muito grande */
-  max-height: 600px;     /* Altura máxima para manter proporções */
+  width: 75vw;           /* Aumenta para 75% da largura da viewport */
+  height: 70vh;          /* Aumenta para 70% da altura da viewport */
+  max-width: 900px;      /* Aumenta largura máxima para telas grandes */
+  max-height: 800px;     /* Aumenta altura máxima */
   z-index: 1;            /* Fica atrás do conteúdo */
   pointer-events: none;  /* Não interfere com cliques */
   overflow: hidden;      /* Esconde partes que ultrapassam */
@@ -26,8 +26,8 @@
   height: 100%;          /* Ocupa toda a altura do container */
   object-fit: contain;   /* Mantém proporções sem cortar */
   object-position: center bottom; /* Posiciona a imagem no centro-bottom */
-  opacity: 0.15;         /* Muito opaca para não atrapalhar leitura */
-  filter: blur(0.5px) brightness(0.8) contrast(1.1); /* Efeitos sutis */
+  opacity: 0.25;         /* Aumenta opacidade para maior presença */
+  filter: blur(0.3px) brightness(0.7) contrast(1.2) saturate(1.1); /* Efeitos mais intensos */
   transition: opacity 0.3s ease; /* Transição suave */
 }
 
@@ -175,12 +175,13 @@
 @media (max-width: 768px) {
   /* Ajusta tamanho da imagem de fundo para tablets */
   .mentalista-background {
-    width: 60vw;           /* Aumenta ligeiramente para tablets */
-    height: 45vh;          /* Reduz altura para não ocupar muito espaço */
+    width: 80vw;           /* Aumenta significativamente para tablets */
+    height: 60vh;          /* Mantém altura substancial */
   }
   
   .mentalista-image {
-    opacity: 0.12;         /* Reduz opacidade em tablets */
+    opacity: 0.20;         /* Mantém presença forte em tablets */
+    filter: blur(0.4px) brightness(0.75) contrast(1.15) saturate(1.05); /* Ajusta filtros */
   }
 
   /* Reorganiza características em coluna para tablets */
@@ -247,13 +248,13 @@
   
   /* Ajustes específicos da imagem de fundo para móveis */
   .mentalista-background {
-    width: 70vw;           /* Aumenta largura para móveis */
-    height: 40vh;          /* Reduz altura para não ocupar muito espaço */
+    width: 85vw;           /* Aumenta largura para ocupar quase toda tela */
+    height: 55vh;          /* Aumenta altura para maior impacto */
   }
   
   .mentalista-image {
-    opacity: 0.08;         /* Opacidade muito baixa para não atrapalhar leitura */
-    filter: blur(0.8px) brightness(0.7); /* Efeitos mais sutis para móveis */
+    opacity: 0.15;         /* Mantém presença visível em móveis */
+    filter: blur(0.6px) brightness(0.7) contrast(1.1); /* Efeitos balanceados */
   }
   
   /* Intensifica fundo da descrição em móveis para melhor legibilidade */
@@ -281,13 +282,13 @@
 /* Otimizações específicas para dispositivos iOS antigos (iPhone 8 e similares) */
 @media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
   .mentalista-background {
-    width: 80vw;           /* Ajusta largura para dispositivos antigos */
-    height: 35vh;          /* Reduz altura */
+    width: 90vw;           /* Maximiza largura para dispositivos antigos */
+    height: 50vh;          /* Aumenta altura para manter impacto */
   }
   
   .mentalista-image {
-    opacity: 0.05 !important; /* Força transparência muito baixa */
-    filter: none; /* Remove filtros pesados */
+    opacity: 0.12 !important; /* Aumenta opacidade mesmo em dispositivos antigos */
+    filter: brightness(0.8); /* Mantém filtro leve para não sobrecarregar */
     will-change: auto; /* Remove otimização que pode causar problemas */
   }
   
