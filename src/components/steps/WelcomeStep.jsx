@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardHeader, CardContent, CardFooter } from '../ui/Card'
 import { Button } from '../ui/Button'
+import mentalistaImage from '../../assets/Mentalista sem fundo.png'
 import './WelcomeStep.css'
 
 /**
@@ -24,6 +25,19 @@ export function WelcomeStep({ onNext }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
+          <motion.div 
+            className="mentalista-image-container"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <img 
+              src={mentalistaImage} 
+              alt="O Mentalista" 
+              className="mentalista-image"
+            />
+          </motion.div>
+          
           <div className="welcome-description">
             <p>
               Vou provar que consigo <strong>ler a sua mente</strong> através de um truque 

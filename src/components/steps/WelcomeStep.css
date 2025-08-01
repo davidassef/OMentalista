@@ -8,6 +8,27 @@
   gap: var(--spacing-xl);
 }
 
+.mentalista-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.mentalista-image {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(139, 92, 246, 0.3));
+  transition: all var(--transition-normal);
+}
+
+.mentalista-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 15px 35px rgba(139, 92, 246, 0.4));
+}
+
 .welcome-description {
   display: flex;
   flex-direction: column;
@@ -154,5 +175,10 @@
   
   .welcome-content {
     gap: var(--spacing-lg);
+  }
+  
+  .mentalista-image {
+    max-width: 150px;
+    max-height: 150px;
   }
 }
