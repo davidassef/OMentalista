@@ -1,184 +1,292 @@
+/* Container principal do passo de boas-vindas */
 .welcome-step {
-  text-align: center;
+  text-align: center;     /* Centraliza todo o conteúdo */
+  position: relative;     /* Permite posicionamento absoluto dos filhos */
+  overflow: hidden;       /* Esconde elementos que ultrapassam os limites */
 }
 
+/* Container do conteúdo principal (textos, botões, etc.) */
 .welcome-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
+  display: flex;          /* Layout flexível */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  gap: var(--spacing-xl); /* Espaçamento entre elementos */
+  position: relative;     /* Posicionamento relativo */
+  z-index: 2;            /* Fica acima da imagem de fundo */
 }
 
+/* Container da imagem de fundo do Mentalista */
 .mentalista-image-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--spacing-md);
+  position: fixed;        /* Fixo na tela, não move com scroll */
+  bottom: 0;             /* Alinhado ao fundo da tela */
+  left: 0;               /* Alinhado à esquerda */
+  z-index: 1;            /* Fica atrás do conteúdo principal */
+  width: 100vw;          /* Largura total da viewport */
+  height: 100vh;         /* Altura total da viewport */
+  display: flex;         /* Layout flexível */
+  align-items: flex-end; /* Alinha imagem ao fundo */
+  justify-content: center; /* Centraliza horizontalmente no container */
+  pointer-events: none;  /* Não interfere com cliques */
 }
 
+/* Imagem do Mentalista de fundo */
 .mentalista-image {
-  max-width: 200px;
-  max-height: 200px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 25px rgba(139, 92, 246, 0.3));
-  transition: all var(--transition-normal);
+  width: 70vw;           /* Aumentado para 70% para mostrar mais do personagem */
+  max-width: 700px;      /* Aumentado para 700px */
+  height: auto;          /* Altura proporcional */
+  object-fit: contain;   /* Mantém proporções da imagem */
+  opacity: 0.2;          /* Transparência para não ofuscar o conteúdo */
+  filter: blur(0.2px) drop-shadow(0 20px 50px rgba(139, 92, 246, 0.4)); /* Efeito de desfoque e sombra roxa */
+  transform: translateX(-67%); /* Desloca a imagem em -67% de sua própria largura para compensar o espaço transparente e centralizar o personagem visualmente */
+  transition: all var(--transition-normal); /* Transição suave para hover */
 }
 
-.mentalista-image:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 15px 35px rgba(139, 92, 246, 0.4));
+/* Efeito hover na imagem do Mentalista */
+.welcome-step:hover .mentalista-image {
+  opacity: 0.2;          /* Aumenta opacidade no hover */
+  transform: translateX(-67%) scale(1.03); /* Mantém a centralização durante o hover */
+  filter: blur(0.1px) drop-shadow(0 25px 60px rgba(139, 92, 246, 0.5)); /* Intensifica efeitos visuais */
 }
 
+/* Container da descrição principal com efeito glassmorphism */
 .welcome-description {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
+  display: flex;          /* Layout flexível */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  gap: var(--spacing-lg); /* Espaçamento entre parágrafos */
+  background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente escuro */
+  backdrop-filter: blur(8px); /* Efeito de desfoque no fundo */
+  border-radius: var(--border-radius-lg); /* Bordas arredondadas */
+  padding: var(--spacing-xl); /* Espaçamento interno */
+  border: 1px solid rgba(139, 92, 246, 0.25); /* Borda roxa sutil */
 }
 
+/* Parágrafos dentro da descrição */
 .welcome-description p {
-  font-size: var(--font-size-lg);
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  margin: 0;
+  font-size: var(--font-size-lg); /* Tamanho de fonte grande */
+  line-height: 1.7;       /* Altura da linha para melhor legibilidade */
+  color: var(--color-text-secondary); /* Cor do texto secundária */
+  margin: 0;              /* Remove margem padrão */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra no texto para contraste */
+  font-weight: 500;       /* Peso da fonte médio */
 }
 
+/* Texto em negrito dentro da descrição */
 .welcome-description strong {
-  color: var(--color-primary-light);
-  font-weight: 600;
+  color: var(--color-primary-light); /* Cor primária clara para destaque */
+  font-weight: 700;       /* Peso da fonte em negrito */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Sombra mais intensa para contraste */
 }
 
+/* Container das características/recursos do jogo */
 .welcome-features {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-xl);
-  margin: var(--spacing-lg) 0;
+  display: flex;          /* Layout flexível */
+  justify-content: center; /* Centraliza os itens */
+  gap: var(--spacing-xl); /* Espaçamento entre características */
+  margin: var(--spacing-lg) 0; /* Margem vertical */
 }
 
+/* Item individual de característica/recurso */
 .feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background: rgba(139, 92, 246, 0.1);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  min-width: 100px;
-  transition: all var(--transition-normal);
+  display: flex;          /* Layout flexível */
+  flex-direction: column; /* Organiza ícone e texto verticalmente */
+  align-items: center;    /* Centraliza conteúdo */
+  gap: var(--spacing-sm); /* Espaçamento entre ícone e texto */
+  padding: var(--spacing-md); /* Espaçamento interno */
+  background: rgba(139, 92, 246, 0.15); /* Fundo roxo semi-transparente */
+  backdrop-filter: blur(6px); /* Efeito de desfoque no fundo */
+  border-radius: var(--border-radius-lg); /* Bordas arredondadas */
+  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
+  min-width: 100px;       /* Largura mínima */
+  transition: all var(--transition-normal); /* Transição suave para hover */
 }
 
+/* Efeito hover no item de característica */
 .feature-item:hover {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: rgba(139, 92, 246, 0.3);
-  transform: translateY(-2px);
+  background: rgba(139, 92, 246, 0.25); /* Intensifica o fundo roxo */
+  border-color: rgba(139, 92, 246, 0.4); /* Intensifica a cor da borda */
+  transform: translateY(-2px); /* Move ligeiramente para cima */
 }
 
+/* Ícone da característica */
 .feature-icon {
-  font-size: var(--font-size-2xl);
-  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-2xl); /* Tamanho grande para o ícone */
+  margin-bottom: var(--spacing-xs); /* Margem inferior */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para contraste */
 }
 
+/* Texto descritivo da característica */
 .feature-item span:last-child {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--color-text-primary);
+  font-size: var(--font-size-sm); /* Tamanho de fonte pequeno */
+  font-weight: 500;       /* Peso da fonte médio */
+  color: var(--color-text-primary); /* Cor do texto primária */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para contraste */
 }
 
+/* Container de aviso/alerta */
 .welcome-warning {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-md);
-  text-align: left;
+  background: rgba(245, 158, 11, 0.1); /* Fundo amarelo semi-transparente */
+  border: 1px solid rgba(245, 158, 11, 0.3); /* Borda amarela */
+  border-radius: var(--border-radius-lg); /* Bordas arredondadas */
+  padding: var(--spacing-lg); /* Espaçamento interno */
+  display: flex;          /* Layout flexível */
+  align-items: flex-start; /* Alinha itens ao topo */
+  gap: var(--spacing-md); /* Espaçamento entre ícone e texto */
+  text-align: left;       /* Alinha texto à esquerda */
 }
 
+/* Ícone de aviso */
 .warning-icon {
-  font-size: var(--font-size-xl);
-  flex-shrink: 0;
-  margin-top: 2px;
+  font-size: var(--font-size-xl); /* Tamanho grande para o ícone */
+  flex-shrink: 0;         /* Não encolhe com flexbox */
+  margin-top: 2px;        /* Pequeno ajuste de alinhamento */
 }
 
+/* Parágrafo dentro do aviso */
 .welcome-warning p {
-  font-size: var(--font-size-base);
-  line-height: 1.6;
-  margin: 0;
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-base); /* Tamanho de fonte padrão */
+  line-height: 1.6;       /* Altura da linha para legibilidade */
+  margin: 0;              /* Remove margem padrão */
+  color: var(--color-text-secondary); /* Cor do texto secundária */
 }
 
+/* Texto em negrito dentro do aviso */
 .welcome-warning strong {
-  color: var(--color-accent);
+  color: var(--color-accent); /* Cor de destaque para texto importante */
 }
 
+/* Botão principal de boas-vindas */
 .welcome-button {
-  font-size: var(--font-size-lg);
-  padding: var(--spacing-lg) var(--spacing-2xl);
-  min-width: 280px;
+  font-size: var(--font-size-lg); /* Tamanho de fonte grande */
+  padding: var(--spacing-lg) var(--spacing-2xl); /* Espaçamento interno generoso */
+  min-width: 280px;       /* Largura mínima para consistência */
 }
 
+/* Texto de disclaimer/aviso legal */
 .welcome-disclaimer {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  margin: var(--spacing-md) 0 0 0;
-  font-style: italic;
+  font-size: var(--font-size-sm); /* Tamanho de fonte pequeno */
+  color: var(--color-text-muted); /* Cor do texto esmaecida */
+  margin: var(--spacing-md) 0 0 0; /* Margem apenas no topo */
+  font-style: italic;     /* Estilo itálico para diferenciação */
 }
 
-/* Responsividade */
+/* ===== SEÇÃO DE RESPONSIVIDADE ===== */
+
+/* Ajustes para tablets e dispositivos médios (até 768px) */
 @media (max-width: 768px) {
+  .mentalista-image {
+    transform: translateX(-3%); /* Garante a centralização correta em telas menores */
+  }
+
+  /* Reorganiza características em coluna para tablets */
   .welcome-features {
-    flex-direction: column;
-    gap: var(--spacing-md);
-    align-items: center;
+    flex-direction: column; /* Muda para layout vertical */
+    gap: var(--spacing-md); /* Reduz espaçamento entre itens */
+    align-items: center;    /* Centraliza os itens */
   }
   
+  /* Ajusta layout dos itens de característica para horizontal */
   .feature-item {
-    flex-direction: row;
-    min-width: auto;
-    width: 100%;
-    max-width: 250px;
-    justify-content: flex-start;
-    text-align: left;
+    flex-direction: row;    /* Muda para layout horizontal */
+    min-width: auto;        /* Remove largura mínima */
+    width: 100%;           /* Ocupa toda a largura disponível */
+    max-width: 250px;      /* Limita largura máxima */
+    justify-content: flex-start; /* Alinha conteúdo à esquerda */
+    text-align: left;      /* Alinha texto à esquerda */
   }
   
+  /* Ajusta posicionamento do ícone para layout horizontal */
   .feature-icon {
-    margin-bottom: 0;
-    margin-right: var(--spacing-sm);
+    margin-bottom: 0;      /* Remove margem inferior */
+    margin-right: var(--spacing-sm); /* Adiciona margem à direita */
   }
   
+  /* Reorganiza aviso para layout vertical */
   .welcome-warning {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* Muda para layout vertical */
+    text-align: center;    /* Centraliza texto */
   }
   
+  /* Ajusta posicionamento do ícone de aviso */
   .warning-icon {
-    margin-top: 0;
-    align-self: center;
+    margin-top: 0;         /* Remove margem superior */
+    align-self: center;    /* Centraliza o ícone */
   }
 }
 
-@media (max-width: 480px) {
-  .welcome-description p {
-    font-size: var(--font-size-base);
-  }
-  
-  .welcome-button {
-    min-width: auto;
-    width: 100%;
-    font-size: var(--font-size-base);
-  }
-  
-  .feature-item {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-  
-  .welcome-content {
-    gap: var(--spacing-lg);
-  }
-  
+/* Ajustes específicos da imagem do Mentalista para tablets */
+@media (max-width: 768px) {
   .mentalista-image {
-    max-width: 150px;
-    max-height: 150px;
+    width: 100vw;           /* Aumenta largura para 90% da viewport */
+    max-width: 700px;      /* Aumenta largura máxima */
+    opacity: 0.25;         /* Reduz opacidade para não ofuscar conteúdo */
+    transform: translateX(-3%); /* Posição fixa para tablets */
+  }
+  
+  /* Remove completamente o efeito de hover em tablets */
+  .welcome-step:hover .mentalista-image {
+    opacity: 0.25; /* Mantém a opacidade base */
+    transform: translateX(-3%); /* Mantém a posição fixa */
+    filter: blur(0.2px) drop-shadow(0 20px 50px rgba(139, 92, 246, 0.4)); /* Mantém o filtro base */
+  }
+}
+
+/* Ajustes para dispositivos móveis pequenos (até 480px) */
+@media (max-width: 480px) {
+  /* Reduz tamanho da fonte da descrição em móveis */
+  .welcome-description p {
+    font-size: var(--font-size-base); /* Tamanho de fonte menor para móveis */
+  }
+  
+  /* Ajusta botão para ocupar toda a largura em móveis */
+  .welcome-button {
+    min-width: auto;        /* Remove largura mínima */
+    width: 100%;           /* Ocupa toda a largura disponível */
+    font-size: var(--font-size-base); /* Reduz tamanho da fonte */
+  }
+  
+  /* Reduz padding dos itens de característica */
+  .feature-item {
+    padding: var(--spacing-sm) var(--spacing-md); /* Padding menor para móveis */
+  }
+  
+  /* Reduz espaçamento entre elementos do conteúdo */
+  .welcome-content {
+    gap: var(--spacing-lg); /* Espaçamento menor entre seções */
+  }
+  
+  /* Ajustes específicos da imagem do Mentalista para móveis */
+  .mentalista-image {
+    width: 100vw;           /* Largura de 100% da viewport */
+    max-width: 500px;      /* Largura máxima reduzida */
+    opacity: 0.2;          /* Opacidade muito baixa para não atrapalhar leitura */
+    filter: blur(0.4px) drop-shadow(0 10px 30px rgba(139, 92, 246, 0.2)); /* Efeitos mais sutis */
+    transform: translateX(-3%); /* Posição fixa para móveis */
+  }
+  
+  /* Remove completamente o efeito de hover em móveis */
+  .welcome-step:hover .mentalista-image {
+    opacity: 0.2; /* Mantém a opacidade base */
+    transform: translateX(-3%); /* Mantém a posição fixa */
+    filter: blur(0.4px) drop-shadow(0 10px 30px rgba(139, 92, 246, 0.2)); /* Mantém o filtro base */
+  }
+  
+  /* Intensifica fundo da descrição em móveis para melhor legibilidade */
+  .welcome-description {
+    background: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+    backdrop-filter: blur(12px); /* Desfoque mais intenso */
+  }
+  
+  /* Intensifica fundo dos itens de característica em móveis */
+  .feature-item {
+    background: rgba(139, 92, 246, 0.2); /* Fundo roxo mais intenso */
+    backdrop-filter: blur(8px); /* Desfoque mais intenso */
+  }
+}
+
+/* Media query específica para dispositivos touch - remove hover em todos os dispositivos móveis */
+@media (hover: none) and (pointer: coarse) {
+  .welcome-step:hover .mentalista-image {
+    opacity: inherit; /* Mantém a opacidade original */
+    transform: inherit; /* Mantém a transformação original */
+    filter: inherit; /* Mantém o filtro original */
   }
 }

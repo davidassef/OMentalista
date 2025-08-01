@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { Card, CardHeader, CardContent, CardFooter } from '../ui/Card'
 import { Button } from '../ui/Button'
 import mentalistaImage from '../../assets/Mentalista sem fundo.png'
@@ -11,6 +12,18 @@ import './WelcomeStep.css'
  * @param {Function} onNext - Função chamada para avançar para o próximo passo
  */
 export function WelcomeStep({ onNext }) {
+  const [showMentalistaImage, setShowMentalistaImage] = useState(false)
+  
+  useEffect(() => {
+    // Aguarda 1.5 segundos para que outros elementos sejam renderizados primeiro
+    // Criando o efeito mágico de aparição da imagem
+    const timer = setTimeout(() => {
+      setShowMentalistaImage(true)
+    }, 1500)
+    
+    return () => clearTimeout(timer)
+  }, [])
+  
   return (
     <Card className="welcome-step">
       <CardHeader 
@@ -25,18 +38,22 @@ export function WelcomeStep({ onNext }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <motion.div 
-            className="mentalista-image-container"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            <img 
-              src={mentalistaImage} 
-              alt="O Mentalista" 
-              className="mentalista-image"
-            />
-          </motion.div>
+          {showMentalistaImage && (
+            <motion.div 
+              className="mentalista-image-container"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+              <img 
+                src={mentalistaImage} 
+                alt="O Mentalista" 
+                className="mentalista-image"
+                loading="lazy"
+                onLoad={() => console.log('Imagem do Mentalista carregada com sucesso!')}
+              />
+            </motion.div>
+          )}
           
           <div className="welcome-description">
             <p>

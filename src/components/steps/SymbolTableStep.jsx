@@ -15,7 +15,7 @@ import './SymbolTableStep.css'
  */
 export function SymbolTableStep({ symbolMap, onNext, onPrev }) {
   const [currentPage, setCurrentPage] = useState(0)
-  const itemsPerPage = 20
+  const itemsPerPage = 15
   const totalPages = Math.ceil(100 / itemsPerPage)
   
   const getCurrentPageItems = () => {
@@ -110,18 +110,8 @@ export function SymbolTableStep({ symbolMap, onNext, onPrev }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.8 }}
           >
-            <div className="pagination-controls">
-              <Button
-                onClick={goToPrevPage}
-                disabled={currentPage === 0}
-                variant="ghost"
-                size="sm"
-                className="pagination-button"
-              >
-                <ChevronLeft size={16} />
-                Anterior
-              </Button>
-              
+            {/* Indicadores de página na parte superior */}
+            <div className="page-indicators-wrapper">
               <div className="page-indicators">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <button
@@ -135,22 +125,39 @@ export function SymbolTableStep({ symbolMap, onNext, onPrev }) {
                   </button>
                 ))}
               </div>
-              
-              <Button
-                onClick={goToNextPage}
-                disabled={currentPage === totalPages - 1}
-                variant="ghost"
-                size="sm"
-                className="pagination-button"
-              >
-                Próxima
-                <ChevronRight size={16} />
-              </Button>
             </div>
             
+            {/* Informações da página */}
             <div className="page-info">
               Página {currentPage + 1} de {totalPages} • 
               Números {currentPage * itemsPerPage} - {Math.min((currentPage + 1) * itemsPerPage - 1, 99)}
+            </div>
+            
+            {/* Botões de navegação na parte inferior */}
+            <div className="navigation-controls">
+              <div className="navigation-button-wrapper">
+                <Button
+                  onClick={goToPrevPage}
+                  disabled={currentPage === 0}
+                  variant="ghost"
+                  size="sm"
+                  className="pagination-button"
+                >
+                  Anterior
+                </Button>
+              </div>
+              
+              <div className="navigation-button-wrapper">
+                <Button
+                  onClick={goToNextPage}
+                  disabled={currentPage === totalPages - 1}
+                  variant="ghost"
+                  size="sm"
+                  className="pagination-button"
+                >
+                  Próxima
+                </Button>
+              </div>
             </div>
           </motion.div>
           
