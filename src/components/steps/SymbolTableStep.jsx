@@ -71,7 +71,7 @@ export function SymbolTableStep({ symbolMap, onNext, onPrev }) {
           >
             <p>
               Encontre o número que você fixou em sua mente na tabela abaixo e 
-              <strong> memorize o símbolo</strong> que está ao lado dele.
+              <strong> memorize o símbolo</strong> que está abaixo dele.
             </p>
           </motion.div>
           
