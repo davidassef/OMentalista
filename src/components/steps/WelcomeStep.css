@@ -14,34 +14,11 @@
   z-index: 2;            /* Fica acima da imagem de fundo */
 }
 
-/* Container da imagem de fundo do Mentalista */
-.mentalista-image-container {
-  position: fixed;        /* Fixo na tela, não move com scroll */
-  bottom: 0;             /* Alinhado ao fundo da tela */
-  left: 0;               /* Alinhado à esquerda */
-  z-index: 1;            /* Fica atrás do conteúdo principal */
-  width: 100vw;          /* Largura total da viewport */
-  height: 100vh;         /* Altura total da viewport */
-  display: flex;         /* Layout flexível */
-  align-items: flex-end; /* Alinha imagem ao fundo */
-  justify-content: center; /* Centraliza horizontalmente no container */
-  pointer-events: none;  /* Não interfere com cliques */
-}
 
-/* Imagem do Mentalista de fundo */
-.mentalista-image {
-  width: 70vw;           /* Aumentado para 70% para mostrar mais do personagem */
-  max-width: 700px;      /* Aumentado para 700px */
-  height: auto;          /* Altura proporcional */
-  object-fit: contain;   /* Mantém proporções da imagem */
-  opacity: 0.2;          /* Transparência para não ofuscar o conteúdo */
-  filter: blur(0.1px) drop-shadow(0 25px 60px rgba(139, 92, 246, 0.5)); /* Efeito de desfoque e sombra roxa fixo */
-  transform: translateX(-67%); /* Desloca a imagem em -67% de sua própria largura para compensar o espaço transparente e centralizar o personagem visualmente */
-  will-change: transform, opacity; /* Otimização para animações */
-  backface-visibility: hidden; /* Melhora performance de animações */
-}
 
-/* Efeito hover removido conforme solicitado */
+
+
+
 
 /* Container da descrição principal com efeito glassmorphism */
 .welcome-description {

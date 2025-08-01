@@ -1,7 +1,6 @@
 /* Otimizações específicas para performance mobile */
 
 /* Força aceleração de hardware para elementos críticos */
-.mentalista-image,
 .welcome-content,
 .card,
 .button {
@@ -46,12 +45,7 @@
     background: rgba(0, 0, 0, 0.95) !important;
   }
   
-  /* Remove filtros da imagem do mentalista */
-  .mentalista-image {
-    filter: none !important;
-    opacity: 0.03 !important;
-    transform: translateX(-50%) scale(0.7) !important;
-  }
+
   
   /* Desabilita todas as animações */
   *,
@@ -92,10 +86,7 @@
     display: none;
   }
   
-  .mentalista-image {
-    opacity: 0.05;
-    filter: none;
-  }
+
 }
 
 /* Otimizações para bateria baixa */
@@ -127,9 +118,7 @@
     display: none !important;
   }
   
-  .mentalista-image {
-    opacity: 0.02 !important;
-  }
+
 }
 
 /* Otimizações para dispositivos antigos detectados via JavaScript */
@@ -143,10 +132,7 @@ body.old-device {
     display: none !important;
   }
   
-  .mentalista-image {
-    opacity: 0.05 !important;
-    filter: none !important;
-  }
+
   
   .welcome-description,
   .feature-item,
@@ -173,19 +159,3 @@ body.reduce-motion {
   }
 }
 
-/* Otimizações específicas para melhorar z-index e sobreposição */
-@media (max-width: 414px) {
-  .mentalista-image-container {
-    z-index: -2 !important;
-  }
-  
-  .welcome-content {
-    z-index: 10 !important;
-    position: relative !important;
-  }
-  
-  .welcome-description {
-    z-index: 11 !important;
-    position: relative !important;
-  }
-}
