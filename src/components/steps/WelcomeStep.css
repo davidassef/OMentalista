@@ -5,6 +5,32 @@
   overflow: hidden;       /* Esconde elementos que ultrapassam os limites */
 }
 
+/* Container da imagem de fundo do Mentalista */
+.mentalista-background {
+  position: absolute;     /* Posicionamento absoluto */
+  bottom: 0;             /* Alinha ao fundo do container */
+  left: 50%;             /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajuste fino da centralização */
+  width: 50vw;           /* Ocupa metade da largura da viewport */
+  height: 50vh;          /* Ocupa metade da altura da viewport */
+  max-width: 600px;      /* Largura máxima para não ficar muito grande */
+  max-height: 600px;     /* Altura máxima para manter proporções */
+  z-index: 1;            /* Fica atrás do conteúdo */
+  pointer-events: none;  /* Não interfere com cliques */
+  overflow: hidden;      /* Esconde partes que ultrapassam */
+}
+
+/* Imagem do Mentalista como fundo */
+.mentalista-image {
+  width: 100%;           /* Ocupa toda a largura do container */
+  height: 100%;          /* Ocupa toda a altura do container */
+  object-fit: contain;   /* Mantém proporções sem cortar */
+  object-position: center bottom; /* Posiciona a imagem no centro-bottom */
+  opacity: 0.15;         /* Muito opaca para não atrapalhar leitura */
+  filter: blur(0.5px) brightness(0.8) contrast(1.1); /* Efeitos sutis */
+  transition: opacity 0.3s ease; /* Transição suave */
+}
+
 /* Container do conteúdo principal (textos, botões, etc.) */
 .welcome-content {
   display: flex;          /* Layout flexível */
@@ -147,8 +173,14 @@
 
 /* Ajustes para tablets e dispositivos médios (até 768px) */
 @media (max-width: 768px) {
+  /* Ajusta tamanho da imagem de fundo para tablets */
+  .mentalista-background {
+    width: 60vw;           /* Aumenta ligeiramente para tablets */
+    height: 45vh;          /* Reduz altura para não ocupar muito espaço */
+  }
+  
   .mentalista-image {
-    transform: translateX(-3%); /* Garante a centralização correta em telas menores */
+    opacity: 0.12;         /* Reduz opacidade em tablets */
   }
 
   /* Reorganiza características em coluna para tablets */
@@ -187,22 +219,7 @@
   }
 }
 
-/* Ajustes específicos da imagem do Mentalista para tablets */
-@media (max-width: 768px) {
-  .mentalista-image {
-    width: 100vw;           /* Aumenta largura para 90% da viewport */
-    max-width: 700px;      /* Aumenta largura máxima */
-    opacity: 0.25;         /* Reduz opacidade para não ofuscar conteúdo */
-    transform: translateX(-3%); /* Posição fixa para tablets */
-  }
-  
-  /* Remove completamente o efeito de hover em tablets */
-  .welcome-step:hover .mentalista-image {
-    opacity: 0.25; /* Mantém a opacidade base */
-    transform: translateX(-3%); /* Mantém a posição fixa */
-    filter: blur(0.2px) drop-shadow(0 20px 50px rgba(139, 92, 246, 0.4)); /* Mantém o filtro base */
-  }
-}
+
 
 /* Ajustes para dispositivos móveis pequenos (até 480px) */
 @media (max-width: 480px) {
@@ -228,20 +245,15 @@
     gap: var(--spacing-lg); /* Espaçamento menor entre seções */
   }
   
-  /* Ajustes específicos da imagem do Mentalista para móveis */
-  .mentalista-image {
-    width: 100vw;           /* Largura de 100% da viewport */
-    max-width: 500px;      /* Largura máxima reduzida */
-    opacity: 0.2;          /* Opacidade muito baixa para não atrapalhar leitura */
-    filter: blur(0.4px) drop-shadow(0 10px 30px rgba(139, 92, 246, 0.2)); /* Efeitos mais sutis */
-    transform: translateX(-3%); /* Posição fixa para móveis */
+  /* Ajustes específicos da imagem de fundo para móveis */
+  .mentalista-background {
+    width: 70vw;           /* Aumenta largura para móveis */
+    height: 40vh;          /* Reduz altura para não ocupar muito espaço */
   }
   
-  /* Remove completamente o efeito de hover em móveis */
-  .welcome-step:hover .mentalista-image {
-    opacity: 0.2; /* Mantém a opacidade base */
-    transform: translateX(-3%); /* Mantém a posição fixa */
-    filter: blur(0.4px) drop-shadow(0 10px 30px rgba(139, 92, 246, 0.2)); /* Mantém o filtro base */
+  .mentalista-image {
+    opacity: 0.08;         /* Opacidade muito baixa para não atrapalhar leitura */
+    filter: blur(0.8px) brightness(0.7); /* Efeitos mais sutis para móveis */
   }
   
   /* Intensifica fundo da descrição em móveis para melhor legibilidade */
@@ -259,12 +271,6 @@
 
 /* Media query específica para dispositivos touch - remove hover em todos os dispositivos móveis */
 @media (hover: none) and (pointer: coarse) {
-  .welcome-step:hover .mentalista-image {
-    opacity: inherit; /* Mantém a opacidade original */
-    transform: inherit; /* Mantém a transformação original */
-    filter: inherit; /* Mantém o filtro original */
-  }
-  
   .welcome-button:hover,
   .feature-item:hover {
     transform: none;
@@ -274,10 +280,14 @@
 
 /* Otimizações específicas para dispositivos iOS antigos (iPhone 8 e similares) */
 @media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  .mentalista-background {
+    width: 80vw;           /* Ajusta largura para dispositivos antigos */
+    height: 35vh;          /* Reduz altura */
+  }
+  
   .mentalista-image {
     opacity: 0.05 !important; /* Força transparência muito baixa */
     filter: none; /* Remove filtros pesados */
-    transform: translateX(-50%) scale(0.8); /* Reduz tamanho e centraliza melhor */
     will-change: auto; /* Remove otimização que pode causar problemas */
   }
   

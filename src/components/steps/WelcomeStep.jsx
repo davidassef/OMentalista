@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardHeader, CardContent, CardFooter } from '../ui/Card'
 import { Button } from '../ui/Button'
+import mentalistaImage from '../../assets/Mentalista sem fundo.png'
 import './WelcomeStep.css'
 
 /**
@@ -13,6 +14,16 @@ export function WelcomeStep({ onNext }) {
   
   return (
     <Card className="welcome-step">
+      {/* Imagem de fundo do Mentalista */}
+      <div className="mentalista-background">
+        <img 
+          src={mentalistaImage} 
+          alt="Mentalista" 
+          className="mentalista-image"
+          loading="lazy"
+        />
+      </div>
+      
       <CardHeader 
         title="🔮 O Mentalista"
         subtitle="Prepare-se para uma experiência que vai desafiar sua mente"
