@@ -1,0 +1,45 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  position: relative;
+  z-index: 10;
+}
+
+.app-main {
+  margin-top: var(--spacing-xl);
+}
+
+.step-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .app-container {
+    padding: var(--spacing-md);
+    max-width: 100%;
+  }
+  
+  .app-main {
+    margin-top: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: var(--spacing-sm);
+  }
+}
