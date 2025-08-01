@@ -1,4 +1,4 @@
-# 🔮 O Mentalista v6.0
+# 🔮 O Mentalista
 
 Uma aplicação web moderna de mentalismo que simula a leitura mental através de uma experiência interativa e envolvente. O projeto utiliza técnicas psicológicas e matemáticas para criar uma ilusão convincente de leitura mental.
 
