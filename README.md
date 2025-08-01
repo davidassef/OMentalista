@@ -1,6 +1,6 @@
 # 🔮 O Mentalista v6.0
 
-Uma aplicação web moderna de mentalismo que simula a leitura mental através de uma experiência interativa e envolvente.
+Uma aplicação web moderna de mentalismo que simula a leitura mental através de uma experiência interativa e envolvente. O projeto utiliza técnicas psicológicas e matemáticas para criar uma ilusão convincente de leitura mental.
 
 ## ✨ Características
 
@@ -9,6 +9,7 @@ Uma aplicação web moderna de mentalismo que simula a leitura mental através d
 - **Design Responsivo**: Funciona perfeitamente em desktop e mobile
 - **Tema Dark**: Interface elegante com tema escuro
 - **Experiência Imersiva**: 5 etapas guiadas para uma experiência completa
+- **Deploy Automático**: Configurado para GitHub Pages, Netlify e Vercel
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -22,10 +23,10 @@ Uma aplicação web moderna de mentalismo que simula a leitura mental através d
 
 ```bash
 # Clone o repositório
-git clone <url-do-repositorio>
+git clone https://github.com/davidassef/omentalista.git
 
 # Entre no diretório
-cd "O Mentalista"
+cd omentalista
 
 # Instale as dependências
 npm install
@@ -90,9 +91,10 @@ vercel --prod
 ### Deploy no GitHub Pages
 
 1. **Configurar GitHub Actions:**
-   - Crie `.github/workflows/deploy.yml`
-   - Configure o workflow para build e deploy
+   - Crie `.github/workflows/deploy.yml` (já configurado)
+   - Configure o workflow para build e deploy (já configurado)
    - Ative GitHub Pages nas configurações do repositório
+   - URL de acesso: https://davidassef.github.io/omentalista/
 
 ### Deploy Manual (Servidor Próprio)
 
