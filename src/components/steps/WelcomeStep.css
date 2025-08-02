@@ -9,7 +9,7 @@
 .mentalista-background {
   position: absolute;     /* Posicionamento absoluto */
   bottom: 0;             /* Alinha ao fundo do container */
-  left: 50%;             /* Centraliza horizontalmente */
+  left: -39%;             /* Centraliza horizontalmente */
   transform: translateX(-50%); /* Ajuste fino da centralização */
   width: 75vw;           /* Aumenta para 75% da largura da viewport */
   height: 70vh;          /* Aumenta para 70% da altura da viewport */
