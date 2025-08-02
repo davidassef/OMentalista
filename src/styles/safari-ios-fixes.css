@@ -50,10 +50,10 @@
 }
 
 /* Otimizações específicas para iPhone Safari */
-@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 414px) {
-  /* Fixa posicionamento da imagem do Mentalista */
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 414px) and (orientation: portrait) {
+  /* Fixa posicionamento da imagem do Mentalista APENAS em dispositivos móveis */
   .mentalista-background {
-    position: fixed !important;
+    position: absolute !important; /* Mantém absolute em vez de fixed */
     bottom: 0 !important;
     left: 50% !important;
     -webkit-transform: translate3d(-50%, 0, 0) !important;

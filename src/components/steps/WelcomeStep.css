@@ -284,7 +284,7 @@
   .mentalista-background {
     width: 90vw;           /* Maximiza largura para dispositivos antigos */
     height: 50vh;          /* Aumenta altura para manter impacto */
-    position: fixed;       /* Fixa posição para evitar reposicionamento */
+    position: absolute;    /* Mantém posicionamento absoluto original */
     -webkit-transform: translate3d(-50%, 0, 0); /* Usa transform3d para GPU */
     transform: translate3d(-50%, 0, 0);
     will-change: auto;     /* Remove will-change para evitar compositing desnecessário */

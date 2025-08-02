@@ -51,13 +51,13 @@
     isolation: isolate !important;
   }
   
-  /* Otimiza imagem do Mentalista para Safari iOS */
-  .mentalista-background {
-    position: fixed !important;
-    -webkit-transform: translate3d(-50%, 0, 0) !important;
-    transform: translate3d(-50%, 0, 0) !important;
-    contain: strict !important;
-  }
+  /* Otimiza imagem do Mentalista para Safari iOS - APENAS em móveis */
+   .mentalista-background {
+     position: absolute !important; /* Mantém posicionamento original */
+     -webkit-transform: translate3d(-50%, 0, 0) !important;
+     transform: translate3d(-50%, 0, 0) !important;
+     contain: strict !important;
+   }
   
   .mentalista-image {
     -webkit-transform: translateZ(0) !important;
