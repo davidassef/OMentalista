@@ -34,27 +34,46 @@
     -webkit-backdrop-filter: none !important;
   }
   
-  /* Força fundos sólidos */
+  /* Força fundos sólidos e GPU acceleration */
   .welcome-description,
   .feature-item,
   .card {
     background: rgba(0, 0, 0, 0.9) !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    contain: layout style paint !important;
   }
   
   .welcome-content {
     background: rgba(0, 0, 0, 0.95) !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    isolation: isolate !important;
   }
   
-
+  /* Otimiza imagem do Mentalista para Safari iOS */
+  .mentalista-background {
+    position: fixed !important;
+    -webkit-transform: translate3d(-50%, 0, 0) !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    contain: strict !important;
+  }
   
-  /* Desabilita todas as animações */
+  .mentalista-image {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    will-change: auto !important;
+  }
+  
+  /* Desabilita todas as animações e transições */
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transform: none !important;
+    -webkit-animation: none !important;
+    animation: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
   }
   
   /* Remove elementos decorativos pesados */

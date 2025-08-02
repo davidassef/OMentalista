@@ -1,0 +1,160 @@
+/* Otimizações específicas para Safari iOS */
+/* Resolve problemas de elementos piscando, micro stutters e posicionamento */
+
+/* Força aceleração de hardware e previne repaint desnecessário */
+.mentalista-background,
+.mentalista-image,
+.welcome-content,
+.welcome-description,
+.feature-item {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+/* Otimizações específicas para Safari iOS */
+@supports (-webkit-touch-callout: none) {
+  /* Previne flickering da imagem do Mentalista */
+  .mentalista-background {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    will-change: auto;
+    contain: layout style paint;
+  }
+  
+  .mentalista-image {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    will-change: auto;
+  }
+  
+  /* Remove backdrop-filter problemático no Safari iOS */
+  .welcome-description,
+  .feature-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+  }
+  
+  /* Força compositing layer para elementos críticos */
+  .welcome-content {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    isolation: isolate;
+  }
+}
+
+/* Otimizações específicas para iPhone Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 414px) {
+  /* Fixa posicionamento da imagem do Mentalista */
+  .mentalista-background {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    -webkit-transform: translate3d(-50%, 0, 0) !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    will-change: auto !important;
+    contain: strict !important;
+  }
+  
+  .mentalista-image {
+    position: relative !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    opacity: 0.1 !important;
+    filter: brightness(0.8) !important;
+    will-change: auto !important;
+  }
+  
+  /* Previne reflow/repaint desnecessário */
+  .welcome-step {
+    contain: layout style paint !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+  }
+  
+  /* Remove transições que causam stuttering */
+  * {
+    -webkit-transition: none !important;
+    transition: none !important;
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+  
+  /* Força rendering otimizado */
+  .welcome-content,
+  .welcome-description,
+  .feature-item {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+}
+
+/* Otimizações para Safari em geral */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+  /* Previne text flickering */
+  .welcome-description p,
+  .feature-item span {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Otimiza rendering de elementos com opacity */
+  .mentalista-image {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Previne scroll bouncing que pode causar reposicionamento */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  .welcome-step {
+    -webkit-overflow-scrolling: auto;
+    overflow-scrolling: auto;
+  }
+}
+
+/* Otimizações para dispositivos com notch */
+@supports (padding: max(0px)) {
+  .welcome-content {
+    padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+    padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+  }
+}
+
+/* Força GPU acceleration para elementos críticos */
+.mentalista-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+/* Previne layout thrashing */
+@media (max-width: 414px) {
+  .welcome-features {
+    contain: layout !important;
+  }
+  
+  .feature-item {
+    contain: layout style !important;
+  }
+}
