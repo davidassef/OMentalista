@@ -49,8 +49,8 @@
   }
 }
 
-/* Otimizações específicas para iPhone Safari */
-@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 414px) and (orientation: portrait) {
+/* Otimizações específicas para iPhone Safari - APENAS dispositivos móveis */
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 414px) and (orientation: portrait) and (pointer: coarse) and (hover: none) {
   /* Fixa posicionamento da imagem do Mentalista APENAS em dispositivos móveis */
   .mentalista-background {
     position: absolute !important; /* Mantém absolute em vez de fixed */

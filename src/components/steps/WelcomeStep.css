@@ -279,8 +279,8 @@
   }
 }
 
-/* Otimizações específicas para dispositivos iOS antigos (iPhone 8 e similares) */
-@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+/* Otimizações específicas para dispositivos iOS antigos (iPhone 8 e similares) - APENAS móveis */
+@media (max-width: 414px) and (-webkit-min-device-pixel-ratio: 2) and (pointer: coarse) and (hover: none) {
   .mentalista-background {
     width: 90vw;           /* Maximiza largura para dispositivos antigos */
     height: 50vh;          /* Aumenta altura para manter impacto */
