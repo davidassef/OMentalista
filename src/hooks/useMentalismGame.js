@@ -86,7 +86,7 @@ export function useMentalismGame() {
       if (i % 9 === 0 && i <= 90) {
         // Múltiplos de 9 (0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90) recebem seu símbolo específico
         symbolMap.set(i, pageSymbols.get(i))
-      } else if (i >= 10) {
+      } else {
         // Verifica se este número é o "isca" de algum múltiplo de 9
         let isDecoy = false
         for (const [multiple, decoy] of decoyNumbers.entries()) {
@@ -102,10 +102,6 @@ export function useMentalismGame() {
           const randomSymbol = distractionPool[Math.floor(Math.random() * distractionPool.length)]
           symbolMap.set(i, randomSymbol)
         }
-      } else {
-        // Números de 0 a 9 recebem símbolos aleatórios
-        const randomSymbol = distractionPool[Math.floor(Math.random() * distractionPool.length)]
-        symbolMap.set(i, randomSymbol)
       }
     }
     
