@@ -34,9 +34,9 @@ export function useMentalismGame() {
     const pageSymbols = new Map() // Mapeia cada múltiplo de 9 para seu símbolo
     const usedSymbols = new Set()
     
-    // Identifica os múltiplos de 9 e atribui símbolos únicos para cada um
+    // Identifica os múltiplos de 9 (a partir de 18) e atribui símbolos únicos para cada um
     const magicNumbers = []
-    for (let i = 9; i <= 99; i += 9) {
+    for (let i = 18; i <= 99; i += 9) {
       magicNumbers.push(i)
       
       // Seleciona um símbolo único para este múltiplo de 9
@@ -74,7 +74,7 @@ export function useMentalismGame() {
     
     // Preenche o mapa de símbolos para todos os números de 0 a 99
     for (let i = 0; i <= 99; i++) {
-      if (i >= 10 && i % 9 === 0) {
+      if (i >= 18 && i % 9 === 0) {
         // Múltiplos de 9 (a partir de 18) recebem seu símbolo específico
         symbolMap.set(i, pageSymbols.get(i))
       } else if (i >= 10) {
@@ -101,7 +101,7 @@ export function useMentalismGame() {
     }
     
     // Retorna o símbolo do primeiro múltiplo de 9 como referência
-    const firstMagicSymbol = pageSymbols.get(9) || magicSymbol
+    const firstMagicSymbol = pageSymbols.get(18) || magicSymbol
     
     return { symbolMap, magicSymbol: firstMagicSymbol }
   }, [gameId]) // Regenera quando gameId muda
