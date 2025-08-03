@@ -25,29 +25,29 @@ export function useMentalismGame() {
     
     // Embaralha os símbolos para cada nova partida
     const shuffledSymbols = [...allSymbols].sort(() => Math.random() - 0.5)
-    const magicSymbol = shuffledSymbols[0]
-    const distractionPool = shuffledSymbols.slice(1)
     
     const symbolMap = new Map()
-    
-    // Para cada múltiplo de 9, cria um símbolo único que se repete exatamente uma vez na mesma página
     const pageSymbols = new Map() // Mapeia cada múltiplo de 9 para seu símbolo
-    const usedSymbols = new Set()
-    
-    // Identifica todos os múltiplos de 9 possíveis (0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90)
+    const usedSymbols = new Set() // Garante que cada múltiplo de 9 tenha um símbolo único
+
+    // Identifica todos os múltiplos de 9 possíveis (0, 9, 18, ..., 90)
     const magicNumbers = []
     for (let i = 0; i <= 90; i += 9) {
       magicNumbers.push(i)
-      
-      // Seleciona um símbolo único para este múltiplo de 9
-      let symbolForThisMultiple
-      do {
-        symbolForThisMultiple = shuffledSymbols[Math.floor(Math.random() * shuffledSymbols.length)]
-      } while (usedSymbols.has(symbolForThisMultiple))
-      
-      usedSymbols.add(symbolForThisMultiple)
-      pageSymbols.set(i, symbolForThisMultiple)
     }
+
+    // Atribui um símbolo único e exclusivo para cada múltiplo de 9
+    magicNumbers.forEach((number, index) => {
+      const symbol = shuffledSymbols[index]
+      pageSymbols.set(number, symbol)
+      usedSymbols.add(symbol)
+    })
+
+    // O símbolo mágico é o do primeiro múltiplo de 9 (0)
+    const magicSymbol = pageSymbols.get(0)
+
+    // O pool de distração contém todos os símbolos, exceto os usados para os múltiplos de 9
+    const distractionPool = allSymbols.filter(s => !usedSymbols.has(s))
     
     // Para cada página, seleciona um número aleatório para repetir o símbolo do múltiplo de 9
     const decoyNumbers = new Map() // Mapeia múltiplo de 9 -> número que repetirá seu símbolo
@@ -105,10 +105,7 @@ export function useMentalismGame() {
       }
     }
     
-    // Retorna o símbolo do primeiro múltiplo de 9 como referência
-    const firstMagicSymbol = pageSymbols.get(0) || magicSymbol
-    
-    return { symbolMap, magicSymbol: firstMagicSymbol }
+    return { symbolMap, magicSymbol }
   }, [gameId]) // Regenera quando gameId muda
 
   /**
