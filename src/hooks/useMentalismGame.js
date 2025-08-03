@@ -36,7 +36,7 @@ export function useMentalismGame() {
       magicNumbers.push(i)
     }
     
-    // Seleciona alguns números não-múltiplos de 9 para também receberem o símbolo mágico
+    // Seleciona apenas UM número não-múltiplo de 9 para também receber o símbolo mágico
     // Isso evita que o jogador perceba que apenas múltiplos de 9 têm o mesmo símbolo
     const nonMagicNumbers = []
     for (let i = 10; i <= 99; i++) {
@@ -45,15 +45,14 @@ export function useMentalismGame() {
       }
     }
     
-    // Embaralha e seleciona 8-12 números não-mágicos para receberem o símbolo mágico
+    // Embaralha e seleciona apenas 1 número não-mágico para receber o símbolo mágico
     const shuffledNonMagic = [...nonMagicNumbers].sort(() => Math.random() - 0.5)
-    const decoyCount = 8 + Math.floor(Math.random() * 5) // Entre 8 e 12
-    const decoyNumbers = shuffledNonMagic.slice(0, decoyCount)
+    const decoyNumber = shuffledNonMagic[0] // Apenas um número
     
     // Preenche o mapa de símbolos
     for (let i = 0; i <= 99; i++) {
-      if (i > 0 && (i % 9 === 0 || decoyNumbers.includes(i))) {
-        // Múltiplos de 9 e números "isca" recebem o símbolo mágico
+      if (i > 0 && (i % 9 === 0 || i === decoyNumber)) {
+        // Múltiplos de 9 e o número "isca" recebem o símbolo mágico
         symbolMap.set(i, magicSymbol)
       } else {
         // Outros números recebem símbolos aleatórios
