@@ -34,9 +34,9 @@ export function useMentalismGame() {
     const pageSymbols = new Map() // Mapeia cada múltiplo de 9 para seu símbolo
     const usedSymbols = new Set()
     
-    // Identifica os múltiplos de 9 (a partir de 18) e atribui símbolos únicos para cada um
+    // Identifica todos os múltiplos de 9 possíveis (0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90)
     const magicNumbers = []
-    for (let i = 18; i <= 99; i += 9) {
+    for (let i = 0; i <= 90; i += 9) {
       magicNumbers.push(i)
       
       // Seleciona um símbolo único para este múltiplo de 9
@@ -53,13 +53,22 @@ export function useMentalismGame() {
     const decoyNumbers = new Map() // Mapeia múltiplo de 9 -> número que repetirá seu símbolo
     
     magicNumbers.forEach(multiple => {
-      const pageStart = Math.floor((multiple - 1) / 10) * 10 + 1
-      const pageEnd = pageStart + 9
+      let pageStart, pageEnd
+      
+      if (multiple === 0 || multiple === 9) {
+        // Para 0 e 9, a "página" é de 0 a 9
+        pageStart = 0
+        pageEnd = 9
+      } else {
+        // Para outros múltiplos, calcula a página normalmente
+        pageStart = Math.floor((multiple - 1) / 10) * 10 + 1
+        pageEnd = pageStart + 9
+      }
       
       // Encontra todos os números da página que não são o próprio múltiplo de 9
       const availableNumbers = []
       for (let i = pageStart; i <= pageEnd; i++) {
-        if (i !== multiple && i >= 10) { // Exclui números menores que 10
+        if (i !== multiple) {
           availableNumbers.push(i)
         }
       }
@@ -74,8 +83,8 @@ export function useMentalismGame() {
     
     // Preenche o mapa de símbolos para todos os números de 0 a 99
     for (let i = 0; i <= 99; i++) {
-      if (i >= 18 && i % 9 === 0) {
-        // Múltiplos de 9 (a partir de 18) recebem seu símbolo específico
+      if (i % 9 === 0 && i <= 90) {
+        // Múltiplos de 9 (0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90) recebem seu símbolo específico
         symbolMap.set(i, pageSymbols.get(i))
       } else if (i >= 10) {
         // Verifica se este número é o "isca" de algum múltiplo de 9
@@ -101,7 +110,7 @@ export function useMentalismGame() {
     }
     
     // Retorna o símbolo do primeiro múltiplo de 9 como referência
-    const firstMagicSymbol = pageSymbols.get(18) || magicSymbol
+    const firstMagicSymbol = pageSymbols.get(0) || magicSymbol
     
     return { symbolMap, magicSymbol: firstMagicSymbol }
   }, [gameId]) // Regenera quando gameId muda
