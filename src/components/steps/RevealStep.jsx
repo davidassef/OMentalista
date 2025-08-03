@@ -245,21 +245,13 @@ export function RevealStep({ magicSymbol, onRestart, onPrev }) {
       
       <CardFooter>
         <div className="step-buttons">
-          <Button 
-            onClick={onPrev}
-            variant="ghost"
-            size="md"
-            disabled={isRevealing && !showSymbol}
-          >
-            ← Voltar
-          </Button>
-          
           {showSymbol && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 1.5 }}
               className="final-buttons"
+              style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
             >
               <Button 
                 onClick={onRestart}

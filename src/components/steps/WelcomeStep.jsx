@@ -41,11 +41,12 @@ export function WelcomeStep({ onNext }) {
           <div className="welcome-description">
             <p>
               Vou provar que consigo <strong>ler a sua mente</strong> através de um truque 
-              matemático fascinante. Tudo o que você precisa fazer é seguir minhas 
+              de psicologia fascinante. Tudo o que você precisa fazer é seguir minhas 
               instruções com atenção.
             </p>
-            
-            <div className="welcome-features">
+          </div>
+          
+          <div className="welcome-features">
               <motion.div 
                 className="feature-item"
                 initial={{ opacity: 0, x: -20 }}
@@ -76,7 +77,6 @@ export function WelcomeStep({ onNext }) {
                 <span>Experiência única</span>
               </motion.div>
             </div>
-          </div>
           
           <motion.div 
             className="welcome-warning"

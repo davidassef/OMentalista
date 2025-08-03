@@ -15,7 +15,7 @@ import './SymbolTableStep.css'
  */
 export function SymbolTableStep({ symbolMap, onNext, onPrev }) {
   const [currentPage, setCurrentPage] = useState(0)
-  const itemsPerPage = 15
+  const itemsPerPage = 11
   const totalPages = Math.ceil(100 / itemsPerPage)
   
   const getCurrentPageItems = () => {

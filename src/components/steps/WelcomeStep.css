@@ -80,7 +80,7 @@
 .welcome-features {
   display: flex;          /* Layout flexível */
   justify-content: center; /* Centraliza os itens */
-  gap: var(--spacing-xl); /* Espaçamento entre características */
+  gap: var(--spacing-md); /* Espaçamento reduzido entre características */
   margin: var(--spacing-lg) 0; /* Margem vertical */
 }
 

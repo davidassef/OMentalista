@@ -91,23 +91,7 @@ export function CalculationStep({ onNext, onPrev }) {
             </motion.div>
           </div>
           
-          <motion.div 
-            className="calculation-visual"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-          >
-            <div className="visual-formula">
-              <div className="formula-part">
-                <span className="number-placeholder">SEU NÚMERO</span>
-                <span className="operator">-</span>
-                <span className="calculation">(soma dos dígitos)</span>
-                <span className="equals">=</span>
-                <span className="result">RESULTADO</span>
-              </div>
-            </div>
-          </motion.div>
-          
+
           <motion.div 
             className="calculation-tip"
             initial={{ opacity: 0, y: 20 }}

@@ -52,6 +52,10 @@ export function useMentalismGame() {
    */
   const nextStep = () => {
     setCurrentStep(prev => prev + 1)
+    // Scroll automático para o topo da página
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
   }
 
   /**
@@ -67,6 +71,10 @@ export function useMentalismGame() {
   const restart = () => {
     setCurrentStep(0)
     setGameId(prev => prev + 1) // Força regeneração dos símbolos
+    // Scroll automático para o topo da página
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
   }
 
   /**
