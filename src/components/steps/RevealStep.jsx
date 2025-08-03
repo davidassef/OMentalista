@@ -201,7 +201,7 @@ export function RevealStep({ magicSymbol, onRestart, onPrev }) {
                   </p>
                   
                   <p className="final-message">
-                    ✨ <em>"A mente humana é o maior mistério do universo"</em> ✨
+                    ✨ <em>"A mente humana é o maior mistério do universo"</em>
                   </p>
                 </div>
               </motion.div>
