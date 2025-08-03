@@ -26,15 +26,6 @@ export function ThinkNumberStep({ onNext, onPrev }) {
           transition={{ duration: 0.6 }}
         >
           <div className="instruction-main">
-            <motion.div 
-              className="number-display"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <span className="number-placeholder">??</span>
-            </motion.div>
-            
             <motion.p 
               className="instruction-text"
               initial={{ opacity: 0, y: 20 }}
@@ -46,6 +37,15 @@ export function ThinkNumberStep({ onNext, onPrev }) {
               Pode ser qualquer um: sua idade, um número da sorte, ou simplesmente 
               o primeiro que vier à sua mente.
             </motion.p>
+            
+            <motion.div 
+              className="number-display"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="number-placeholder">??</span>
+            </motion.div>
           </div>
           
           <motion.div 
