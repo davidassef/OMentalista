@@ -145,9 +145,15 @@ A aplicação guia o usuário através de uma experiência de mentalismo em 5 et
 5. **Revelação**: O "mentalista" revela magicamente o símbolo pensado
 
 ### 🧠 A Magia por Trás
-A aplicação utiliza princípios matemáticos baseados em múltiplos de 9 e uma interface cuidadosamente projetada para mascarar o padrão, criando uma experiência verdadeiramente mágica de leitura mental.
+A aplicação utiliza princípios matemáticos baseados em múltiplos de 9 combinados com um algoritmo sofisticado de distribuição de símbolos. O sistema gera símbolos únicos para cada múltiplo de 9 e os replica estrategicamente em números aleatórios da mesma página (faixa de 10 números), criando exatamente duas ocorrências do mesmo símbolo por página. Esta abordagem torna o padrão matemático praticamente imperceptível, proporcionando uma experiência verdadeiramente mágica de leitura mental.
 
 ## 🆕 Melhorias Recentes
+
+### Algoritmo de Geração de Símbolos Aprimorado
+- **Repetição Estratégica por Página**: Cada múltiplo de 9 recebe um símbolo único que se repete exatamente uma vez em um número aleatório da mesma faixa de 10 números
+- **Mascaramento de Padrões**: Sistema inteligente que dificulta a identificação do padrão matemático subjacente
+- **Distribuição Otimizada**: Algoritmo que garante duas ocorrências precisas do mesmo símbolo por página, tornando o truque mais convincente
+- **Símbolos Únicos**: Cada múltiplo de 9 possui seu próprio símbolo, eliminando repetições desnecessárias
 
 ### Interface da Tabela de Símbolos
 - **Paginação Reorganizada**: Indicadores numéricos no topo e botões de navegação na base
@@ -161,6 +167,7 @@ A aplicação utiliza princípios matemáticos baseados em múltiplos de 9 e uma
 - **Feedback Visual**: Efeitos shimmer e transições suaves nos botões
 - **Acessibilidade**: Estados disabled bem definidos e contraste adequado
 - **Performance**: Animações otimizadas e carregamento rápido
+- **Algoritmo Imperceptível**: Lógica matemática completamente mascarada pela interface intuitiva
 
 ## 🔧 Configurações de Deploy
 
