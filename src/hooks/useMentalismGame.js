@@ -34,10 +34,29 @@ export function useMentalismGame() {
     // 2. Cria um pool de distração com todos os outros símbolos
     const distractionPool = shuffledSymbols.slice(1)
 
-    // 3. Preenche o mapa de símbolos
+    // 3. Para cada "página" (dezena), escolhe um número aleatório para ser a "isca"
+    const decoyNumbers = new Set()
+    for (let page = 0; page < 10; page++) {
+      const pageStart = page * 10
+      const pageEnd = pageStart + 9
+      
+      const availableDecoys = []
+      for (let i = pageStart; i <= pageEnd; i++) {
+        if (i % 9 !== 0) {
+          availableDecoys.push(i)
+        }
+      }
+      
+      if (availableDecoys.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableDecoys.length)
+        decoyNumbers.add(availableDecoys[randomIndex])
+      }
+    }
+
+    // 4. Preenche o mapa de símbolos
     for (let i = 0; i <= 99; i++) {
-      if (i % 9 === 0) {
-        // Todos os múltiplos de 9 recebem o mesmo símbolo mágico
+      if (i % 9 === 0 || decoyNumbers.has(i)) {
+        // Múltiplos de 9 e "iscas" recebem o símbolo mágico
         symbolMap.set(i, magicSymbol)
       } else {
         // Outros números recebem um símbolo aleatório do pool de distração
