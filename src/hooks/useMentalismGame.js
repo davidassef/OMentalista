@@ -72,12 +72,12 @@ export function useMentalismGame() {
       }
     })
     
-    // Preenche o mapa de símbolos
-    for (let i = 10; i <= 99; i++) {
-      if (i % 9 === 0) {
-        // Múltiplos de 9 recebem seu símbolo específico
+    // Preenche o mapa de símbolos para todos os números de 0 a 99
+    for (let i = 0; i <= 99; i++) {
+      if (i >= 10 && i % 9 === 0) {
+        // Múltiplos de 9 (a partir de 18) recebem seu símbolo específico
         symbolMap.set(i, pageSymbols.get(i))
-      } else {
+      } else if (i >= 10) {
         // Verifica se este número é o "isca" de algum múltiplo de 9
         let isDecoy = false
         for (const [multiple, decoy] of decoyNumbers.entries()) {
@@ -93,6 +93,10 @@ export function useMentalismGame() {
           const randomSymbol = distractionPool[Math.floor(Math.random() * distractionPool.length)]
           symbolMap.set(i, randomSymbol)
         }
+      } else {
+        // Números de 0 a 9 recebem símbolos aleatórios
+        const randomSymbol = distractionPool[Math.floor(Math.random() * distractionPool.length)]
+        symbolMap.set(i, randomSymbol)
       }
     }
     
