@@ -30,40 +30,76 @@ export function useMentalismGame() {
     
     const symbolMap = new Map()
     
-    // Identifica os múltiplos de 9 (números mágicos)
+    // Para cada múltiplo de 9, cria um símbolo único que se repete exatamente uma vez na mesma página
+    const pageSymbols = new Map() // Mapeia cada múltiplo de 9 para seu símbolo
+    const usedSymbols = new Set()
+    
+    // Identifica os múltiplos de 9 e atribui símbolos únicos para cada um
     const magicNumbers = []
     for (let i = 9; i <= 99; i += 9) {
       magicNumbers.push(i)
+      
+      // Seleciona um símbolo único para este múltiplo de 9
+      let symbolForThisMultiple
+      do {
+        symbolForThisMultiple = shuffledSymbols[Math.floor(Math.random() * shuffledSymbols.length)]
+      } while (usedSymbols.has(symbolForThisMultiple))
+      
+      usedSymbols.add(symbolForThisMultiple)
+      pageSymbols.set(i, symbolForThisMultiple)
     }
     
-    // Seleciona apenas UM número não-múltiplo de 9 para também receber o símbolo mágico
-    // Isso evita que o jogador perceba que apenas múltiplos de 9 têm o mesmo símbolo
-    const nonMagicNumbers = []
-    for (let i = 10; i <= 99; i++) {
-      if (i % 9 !== 0) {
-        nonMagicNumbers.push(i)
+    // Para cada página, seleciona um número aleatório para repetir o símbolo do múltiplo de 9
+    const decoyNumbers = new Map() // Mapeia múltiplo de 9 -> número que repetirá seu símbolo
+    
+    magicNumbers.forEach(multiple => {
+      const pageStart = Math.floor((multiple - 1) / 10) * 10 + 1
+      const pageEnd = pageStart + 9
+      
+      // Encontra todos os números da página que não são o próprio múltiplo de 9
+      const availableNumbers = []
+      for (let i = pageStart; i <= pageEnd; i++) {
+        if (i !== multiple && i >= 10) { // Exclui números menores que 10
+          availableNumbers.push(i)
+        }
       }
-    }
-    
-    // Embaralha e seleciona apenas 1 número não-mágico para receber o símbolo mágico
-    const shuffledNonMagic = [...nonMagicNumbers].sort(() => Math.random() - 0.5)
-    const decoyNumber = shuffledNonMagic[0] // Apenas um número
+      
+      // Seleciona um número aleatório para repetir o símbolo
+      if (availableNumbers.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableNumbers.length)
+        const decoyNumber = availableNumbers[randomIndex]
+        decoyNumbers.set(multiple, decoyNumber)
+      }
+    })
     
     // Preenche o mapa de símbolos
-    for (let i = 0; i <= 99; i++) {
-      if (i > 0 && (i % 9 === 0 || i === decoyNumber)) {
-        // Múltiplos de 9 e o número "isca" recebem o símbolo mágico
-        symbolMap.set(i, magicSymbol)
+    for (let i = 10; i <= 99; i++) {
+      if (i % 9 === 0) {
+        // Múltiplos de 9 recebem seu símbolo específico
+        symbolMap.set(i, pageSymbols.get(i))
       } else {
-        // Outros números recebem símbolos aleatórios
-        const randomSymbol = distractionPool[
-          Math.floor(Math.random() * distractionPool.length)
-        ]
-        symbolMap.set(i, randomSymbol)
+        // Verifica se este número é o "isca" de algum múltiplo de 9
+        let isDecoy = false
+        for (const [multiple, decoy] of decoyNumbers.entries()) {
+          if (i === decoy) {
+            symbolMap.set(i, pageSymbols.get(multiple))
+            isDecoy = true
+            break
+          }
+        }
+        
+        if (!isDecoy) {
+          // Números normais recebem símbolos aleatórios
+          const randomSymbol = distractionPool[Math.floor(Math.random() * distractionPool.length)]
+          symbolMap.set(i, randomSymbol)
+        }
       }
     }
     
-    return { symbolMap, magicSymbol }
+    // Retorna o símbolo do primeiro múltiplo de 9 como referência
+    const firstMagicSymbol = pageSymbols.get(9) || magicSymbol
+    
+    return { symbolMap, magicSymbol: firstMagicSymbol }
   }, [gameId]) // Regenera quando gameId muda
 
   /**
